@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from pysnmp.entity import engine, config
-from pysnmp.carriar.asyncsock.dgram import udp
+from pysnmp.carrier.asyncsock.dgram import udp
 from pysnmp.entity.rfc3413 import cmdgen
 
 # Create SNMP engine
