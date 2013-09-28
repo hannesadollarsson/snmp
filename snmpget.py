@@ -9,8 +9,8 @@ snmpEngine = engine.SnmpEngine()
 # Authentication and privacy settings
 config.addV3User(
 	snmpEngine, 'nms',
-	config.usmHMACSHAAuthProtocol, 'Nobia20!3C5',
-	config.usmAesCfb128Protocol, 'Nobia20!3C5'
+	config.usmHMACSHAAuthProtocol, 'SECRET',
+	config.usmAesCfb128Protocol, 'SECRET'
 )
 
 config.addTargetParams(snmpEngine, 'my-creds', 'nms', 'authPriv')
@@ -24,8 +24,8 @@ config.addSocketTransport(
 
 # add host
 config.addTargetAddr(
-	snmpEngine, 'ciscofw01',
-	udp.domainName, ('10.10.0.240', 161),
+	snmpEngine, 'ROUTER',
+	udp.domainName, ('1.1.1.1', 161),
 	'my-creds'
 )	
 
@@ -44,7 +44,7 @@ def cbFun(sendRequestHandle, errorIndication, errorStatus, errorIndex, varBindTa
 
 cmdgen.GetCommandGenerator().sendReq(
 	snmpEngine,
-	'ciscofw01',
+	'ROUTER',
 	( ((1,3,6,1,4,1,9,9,147,1,2,1,1,1,3,7), None), ),
 	cbFun
 )
